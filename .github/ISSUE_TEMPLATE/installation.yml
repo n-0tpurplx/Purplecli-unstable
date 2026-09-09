@@ -1,0 +1,72 @@
+name: Installation Issue
+description: Report problems installing or setting up PurpleCli
+title: "[Installation]: "
+
+body:
+  - type: dropdown
+    attributes:
+      label: Version Channel
+      description: Which PurpleCli version are you trying to install?
+      options:
+        - Stable
+        - Unstable
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Installation Method
+      description: How are you installing PurpleCli?
+      options:
+        - install.sh
+        - Manual installation
+        - PyPI
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: PurpleCli Version
+      description: Enter the version if PurpleCli is already installed.
+      placeholder: "0.1.5"
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Environment
+      description: Provide information about your system.
+      placeholder: |
+        OS:
+        Python version:
+        Shell:
+        Architecture:
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Installation Problem
+      description: Describe what went wrong during installation or setup.
+      placeholder: |
+        I tried to...
+        but...
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Error or Terminal Output
+      description: Paste any relevant terminal output here.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: Add anything else that may help.
+      placeholder: Additional information, screenshots, or logs.
+    validations:
+      required: false
