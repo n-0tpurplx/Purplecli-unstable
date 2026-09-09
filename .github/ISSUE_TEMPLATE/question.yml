@@ -1,0 +1,58 @@
+name: Question or Help
+description: Ask a question or get help with PurpleCli
+title: "[Question]: "
+
+body:
+  - type: dropdown
+    attributes:
+      label: Category
+      description: What do you need help with?
+      options:
+        - Installation
+        - Configuration
+        - API Providers
+        - Commands
+        - Agent Behavior
+        - Development
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Your Question
+      description: Clearly describe what you need help with.
+      placeholder: |
+        How do I...
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: What Have You Tried?
+      description: Tell us what you have already tried.
+      placeholder: |
+        I tried...
+        but...
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Environment
+      description: If relevant, provide information about your setup.
+      placeholder: |
+        OS:
+        Python version:
+        PurpleCli version:
+        Installation method:
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Additional Information
+      description: Add anything else that may help.
+      placeholder: Additional information or screenshots.
+    validations:
+      required: false
