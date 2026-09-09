@@ -1,55 +1,53 @@
 name: Documentation
-description: Report incorrect, missing, or unclear documentation
-title: “[Docs] “
+description: Report incorrect, missing, outdated, or unclear documentation
+title: "[Docs]: "
 
 body:
+  - type: dropdown
+    attributes:
+      label: Documentation Issue
+      description: What is wrong with the documentation?
+      options:
+        - Incorrect information
+        - Missing information
+        - Unclear information
+        - Typo or spelling error
+        - Outdated information
+        - Other
+    validations:
+      required: true
 
-* type: dropdown
-    id: type
+  - type: input
     attributes:
-    label: Documentation Issue
-    description: What is wrong with the documentation?
-    options:
-    - Incorrect information
-    - Missing information
-    - Unclear information
-    - Typo or spelling error
-    - Outdated information
-    - Other
+      label: Documentation Location
+      description: Where can the issue be found?
+      placeholder: "README.md or CONTRIBUTING.md"
     validations:
-    required: true
-* type: input
-    id: location
+      required: true
+
+  - type: textarea
     attributes:
-    label: Documentation Location
-    description: Where is the documentation issue?
-    placeholder: “README.md, CONTRIBUTING.md, etc.”
+      label: What Is Wrong?
+      description: Explain what is incorrect, missing, or unclear.
+      placeholder: |
+        The documentation currently says...
+        but it should say...
     validations:
-    required: true
-* type: textarea
-    id: problem
+      required: true
+
+  - type: textarea
     attributes:
-    label: What’s Wrong?
-    description: Explain what is incorrect, missing, or unclear.
-    placeholder: |
-    The documentation currently says…
-    but it should say…
+      label: Suggested Change
+      description: Explain how you think the documentation should be changed.
+      placeholder: |
+        I suggest changing it to...
     validations:
-    required: true
-* type: textarea
-    id: suggestion
+      required: false
+
+  - type: textarea
     attributes:
-    label: Suggested Change
-    description: If possible, explain how the documentation should be changed.
-    placeholder: |
-    I suggest changing it to…
+      label: Additional Information
+      description: Add anything else that may help.
+      placeholder: Additional information or screenshots.
     validations:
-    required: false
-* type: textarea
-    id: additional
-    attributes:
-    label: Additional Information
-    description: Add anything else that may help.
-    placeholder: Anything else?
-    validations:
-    required: false
+      required: false
