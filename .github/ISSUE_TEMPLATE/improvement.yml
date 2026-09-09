@@ -1,51 +1,57 @@
 name: Improvement
 description: Suggest an improvement to an existing PurpleCli feature
-title: “[Improvement] “
+title: "[Improvement]: "
 
 body:
+  - type: dropdown
+    attributes:
+      label: Version Channel
+      description: Which PurpleCli version channel are you using?
+      options:
+        - Stable
+        - Unstable
+    validations:
+      required: true
 
-* type: dropdown
-    id: version
+  - type: input
     attributes:
-    label: Version
-    description: Which version are you using?
-    options:
-    - Stable
-    - Unstable
+      label: PurpleCli Version
+      description: Enter the version you are using.
+      placeholder: "0.1.5"
     validations:
-    required: true
-* type: textarea
-    id: current
+      required: true
+
+  - type: textarea
     attributes:
-    label: Current Behavior
-    description: Describe how the feature currently works.
-    placeholder: |
-    Currently, PurpleCli…
+      label: Current Behavior
+      description: Describe how the feature currently works.
+      placeholder: |
+        Currently, PurpleCli...
     validations:
-    required: true
-* type: textarea
-    id: improvement
+      required: true
+
+  - type: textarea
     attributes:
-    label: Proposed Improvement
-    description: Describe how you think it could be improved.
-    placeholder: |
-    It would be better if PurpleCli…
+      label: Proposed Improvement
+      description: Describe how you think it could be improved.
+      placeholder: |
+        It would be better if PurpleCli...
     validations:
-    required: true
-* type: textarea
-    id: reason
+      required: true
+
+  - type: textarea
     attributes:
-    label: Why?
-    description: Explain why this improvement would be useful.
-    placeholder: |
-    This would improve PurpleCli by…
+      label: Why Should This Be Improved?
+      description: Explain why this change would be useful.
+      placeholder: |
+        This would improve PurpleCli because...
     validations:
-    required: true
-* type: textarea
-    id: additional
+      required: true
+
+  - type: textarea
     attributes:
-    label: Additional Information
-    description: Add any other relevant information.
-    placeholder: Anything else?
+      label: Additional Information
+      description: Add anything else that may help.
+      placeholder: Additional information or examples.
     validations:
-    required: false
+      required: false
