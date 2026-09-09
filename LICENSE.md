@@ -62,8 +62,7 @@ Attribution must, where reasonably possible:
 
 Recommended attribution
 
-This software contains code from [PROJECT NAME], originally developed by [COPYRIGHT HOLDER].
-Original source: [ORIGINAL PROJECT URL]
+This software contains code from [PurpleCli], originally developed by [purplx].
 
 Attribution must not be deliberately hidden, removed, or made misleading.
 
