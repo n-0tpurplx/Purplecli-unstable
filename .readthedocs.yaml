@@ -2,22 +2,11 @@
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
 
 # Required
-version: 2
+version: 0.1.5
 
 # Set the OS, Python version, and other tools you might need
 build:
-  os: ubuntu-24.04
+  os: alpine
   tools:
-    python: "3.13"
+    python: "3.x"
 
-# Build documentation in the "docs/" directory with Sphinx
-sphinx:
-   configuration: docs/conf.py
-
-# Optionally, but recommended,
-# declare the Python requirements required to build your documentation
-# See https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html
-# python:
-#    install:
-#    - requirements: docs/requirements.txt
-        
