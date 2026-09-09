@@ -1,56 +1,179 @@
-/* PurpleCli Documentation */
+/* ========================================
+   PurpleCli Documentation
+   ======================================== */
+
+:root {
+    --bg: #09090b;
+    --surface: #111113;
+    --surface-hover: #18181b;
+    --border: #27272a;
+    --text: #e4e4e7;
+    --muted: #a1a1aa;
+    --purple: #a855f7;
+    --purple-light: #c084fc;
+}
+
+/* ---------- Base ---------- */
+
+html {
+    background: var(--bg);
+}
 
 body {
-    background: #0d0d0d;
-    color: #e5e5e5;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Inter,
+        sans-serif;
+    line-height: 1.7;
 }
+
+/* ---------- Main content ---------- */
 
 .document {
-    max-width: 1100px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
 }
 
-h1, h2, h3 {
-    color: #ffffff;
+.documentwrapper {
+    background: var(--bg);
 }
+
+/* ---------- Headings ---------- */
+
+h1 {
+    font-size: 2.8rem;
+    letter-spacing: -0.04em;
+    margin-bottom: 25px;
+    color: white;
+}
+
+h2 {
+    margin-top: 55px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    color: white;
+    font-size: 1.7rem;
+}
+
+h3 {
+    margin-top: 35px;
+    color: white;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+}
+
+/* ---------- Links ---------- */
 
 a {
-    color: #a855f7;
+    color: var(--purple-light);
+    text-decoration: none;
 }
 
 a:hover {
-    color: #c084fc;
+    color: white;
 }
 
-div.body {
-    background: #0d0d0d;
-}
+/* ---------- Code ---------- */
 
-div.sphinxsidebar {
-    background: #111111;
-}
-
-div.sphinxsidebar h3,
-div.sphinxsidebar h4 {
-    color: #ffffff;
-}
-
-div.sphinxsidebar a {
-    color: #c084fc;
+code,
+.literal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2px 6px;
+    color: var(--purple-light);
 }
 
 pre {
-    background: #151515;
-    border: 1px solid #292929;
-    border-radius: 8px;
-    padding: 14px;
+    background: #0f0f11;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: auto;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
-code {
-    background: #181818;
-    border-radius: 4px;
-    padding: 2px 5px;
+pre code {
+    border: none;
+    padding: 0;
+    background: transparent;
 }
 
-hr {
-    border-color: #292929;
+/* ---------- Sidebar ---------- */
+
+.sphinxsidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 35px 25px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
 }
+
+.sphinxsidebar h3 {
+    font-size: 1rem;
+    margin-top: 25px;
+}
+
+.sphinxsidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sphinxsidebar li {
+    margin: 7px 0;
+}
+
+.sphinxsidebar a {
+    color: var(--muted);
+    display: block;
+    padding: 7px 10px;
+    border-radius: 6px;
+}
+
+.sphinxsidebar a:hover {
+    background: var(--surface-hover);
+    color: white;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+    border-top: 1px solid var(--border);
+    margin-top: 70px;
+    padding: 25px 0;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 800px) {
+    .sphinxsidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .document {
+        padding: 35px 20px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+}u
