@@ -24,7 +24,7 @@ The copyright holder for a particular project may be identified in that project�
 
 Example:
 
-Copyright © 2026 [COPYRIGHT HOLDER]
+Copyright © 2026 [purplx]
 
 This license does not transfer ownership of the original work.
 
