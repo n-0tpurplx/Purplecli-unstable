@@ -1,12 +1,9 @@
-# Read the Docs configuration file
-# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+version: 2
 
-# Required
-version: 0.1.5
-
-# Set the OS, Python version, and other tools you might need
 build:
-  os: alpine
+  os: ubuntu-24.04
   tools:
-    python: "3.x"
+    python: "3.12"
 
+sphinx:
+  configuration: docs/conf.py
