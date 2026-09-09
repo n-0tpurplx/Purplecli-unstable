@@ -1,0 +1,52 @@
+name: Feature Request
+description: Suggest a new feature or capability for PurpleCli
+title: “[Feature] “
+
+body:
+
+* type: dropdown
+    id: version
+    attributes:
+    label: Target Version
+    description: Which version should this feature be intended for?
+    options:
+    - Stable
+    - Unstable
+    - Both
+    validations:
+    required: true
+* type: textarea
+    id: feature
+    attributes:
+    label: Feature Description
+    description: Describe the feature you’d like to see.
+    placeholder: |
+    I would like PurpleCli to…
+    validations:
+    required: true
+* type: textarea
+    id: use-case
+    attributes:
+    label: Use Case
+    description: Explain why this feature would be useful.
+    placeholder: |
+    This would be useful because…
+    validations:
+    required: true
+* type: textarea
+    id: implementation
+    attributes:
+    label: Possible Implementation
+    description: If you have an idea for how this could be implemented, describe it here.
+    placeholder: |
+    A possible way to implement this would be…
+    validations:
+    required: false
+* type: textarea
+    id: additional
+    attributes:
+    label: Additional Information
+    description: Add any other relevant information, examples, or screenshots.
+    placeholder: Anything else?
+    validations:
+    required: false
