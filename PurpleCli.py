@@ -33,6 +33,14 @@ Rules:
 
 plan_mode = False
 
+PROVIDERS = ["openrouter", "gemini", "openai"]
+
+PROVIDER_NAMES = {
+    "openrouter": "OpenRouter",
+    "gemini": "Google Gemini",
+    "openai": "OpenAI",
+}
+
 
 def load_config():
     if not CONFIG_FILE.exists():
@@ -40,9 +48,19 @@ def load_config():
 
     try:
         with open(CONFIG_FILE, "r") as f:
-            return json.load(f)
+            config = json.load(f)
     except (json.JSONDecodeError, OSError):
         return {}
+
+    # Migrate old config format (top-level api_key) to new format (keys dict)
+    if "api_key" in config and "keys" not in config:
+        config["keys"] = {config["provider"]: config["api_key"]}
+        del config["api_key"]
+        save_config(config)
+
+    config.setdefault("keys", {})
+
+    return config
 
 
 def save_config(config):
@@ -55,6 +73,24 @@ def save_config(config):
         os.chmod(CONFIG_FILE, 0o600)
     except OSError:
         pass
+
+
+def get_api_key(config, provider):
+    return config.get("keys", {}).get(provider, "")
+
+
+def prompt_for_key(provider):
+    print()
+    if provider == "openrouter":
+        key = input("OpenRouter API key: ").strip()
+    elif provider == "gemini":
+        key = input("Google Gemini API key: ").strip()
+    elif provider == "openai":
+        key = input("OpenAI API key: ").strip()
+    else:
+        key = input(f"API key for {provider}: ").strip()
+
+    return key
 
 
 def setup():
@@ -87,21 +123,16 @@ def setup():
 
     print()
 
-    if provider == "openrouter":
-        key = input("OpenRouter API key: ").strip()
-    elif provider == "gemini":
-        key = input("Google Gemini API key: ").strip()
-    else:
-        key = input("OpenAI API key: ").strip()
+    key = prompt_for_key(provider)
 
     if not key:
         print("No API key entered.")
         return
 
-    config = {
-        "provider": provider,
-        "api_key": key
-    }
+    config = load_config()
+    config["provider"] = provider
+    config.setdefault("keys", {})
+    config["keys"][provider] = key
 
     save_config(config)
 
@@ -110,6 +141,70 @@ def setup():
     print("✓ API key saved.")
     print()
     print("Setup complete.")
+    print()
+
+
+def switch_provider():
+    config = load_config()
+    current = config.get("provider", "none")
+
+    print()
+    print("Switch AI Provider")
+    print("------------------")
+    print()
+    print(f"Current provider: {PROVIDER_NAMES.get(current, current) if current != 'none' else 'none'}")
+    print()
+    print("Choose a provider:")
+
+    for i, prov in enumerate(PROVIDERS, 1):
+        stored = "✓ key stored" if get_api_key(config, prov) else "✗ no key"
+        marker = " *" if prov == current else ""
+        print(f"  {i}. {PROVIDER_NAMES[prov]}  [{stored}]{marker}")
+
+    print()
+
+    while True:
+        choice = input("Provider [1/2/3]: ").strip()
+
+        if choice == "1":
+            new_provider = "openrouter"
+            break
+        elif choice == "2":
+            new_provider = "gemini"
+            break
+        elif choice == "3":
+            new_provider = "openai"
+            break
+
+        print("Please choose 1, 2, or 3.")
+
+    # If not switching, nothing to do
+    if new_provider == current:
+        print()
+        print("Already using this provider.")
+        print()
+        return
+
+    # Check if key is already stored
+    key = get_api_key(config, new_provider)
+
+    if not key:
+        print()
+        print(f"No API key stored for {PROVIDER_NAMES[new_provider]}.")
+        key = prompt_for_key(new_provider)
+
+        if not key:
+            print("No API key entered. Switch cancelled.")
+            return
+
+        config.setdefault("keys", {})
+        config["keys"][new_provider] = key
+
+    config["provider"] = new_provider
+    save_config(config)
+
+    print()
+    print(f"✓ Switched to {PROVIDER_NAMES[new_provider]}.")
     print()
 
 
@@ -289,7 +384,7 @@ def openrouter_request(messages, config):
     response = requests.post(
         "https://openrouter.ai/api/v1/chat/completions",
         headers={
-            "Authorization": f"Bearer {config['api_key']}",
+            "Authorization": f"Bearer {config['keys'][config['provider']]}",
             "Content-Type": "application/json"
         },
         json={
@@ -311,7 +406,7 @@ def gemini_request(messages, config):
     response = requests.post(
         "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
         headers={
-            "Authorization": f"Bearer {config['api_key']}",
+            "Authorization": f"Bearer {config['keys'][config['provider']]}",
             "Content-Type": "application/json"
         },
         json={
@@ -333,7 +428,7 @@ def openai_request(messages, config):
     response = requests.post(
         "https://api.openai.com/v1/chat/completions",
         headers={
-            "Authorization": f"Bearer {config['api_key']}",
+            "Authorization": f"Bearer {config['keys'][config['provider']]}",
             "Content-Type": "application/json"
         },
         json={
@@ -495,6 +590,12 @@ def main():
     )
 
     parser.add_argument(
+        "--switch",
+        action="store_true",
+        help="Switch the AI provider."
+    )
+
+    parser.add_argument(
         "--plan",
         action="store_true",
         help="Start with plan mode enabled."
@@ -506,15 +607,35 @@ def main():
         setup()
         return
 
+    if args.switch:
+        switch_provider()
+        return
+
     config = load_config()
 
-    if not config.get("provider") or not config.get("api_key"):
+    if not config.get("provider"):
         print("PurpleCli has not been configured yet.")
         print()
         print("Run:")
         print("  PurpleCli --setup")
         print()
         return
+
+    # Check if API key exists for the current provider
+    if not get_api_key(config, config["provider"]):
+        print(f"No API key found for {PROVIDER_NAMES.get(config['provider'], config['provider'])}.")
+        print()
+        key = prompt_for_key(config["provider"])
+
+        if not key:
+            print("No API key entered. Exiting.")
+            return
+
+        config.setdefault("keys", {})
+        config["keys"][config["provider"]] = key
+        save_config(config)
+        print("✓ API key saved.")
+        print()
 
     if args.plan:
         plan_mode = True
@@ -545,9 +666,11 @@ def main():
 
         if user_input == "/help":
             print()
-            print("/help   Show this help")
-            print("/exit   Exit PurpleCli")
-            print("/plan   Toggle plan mode")
+            print("/help     Show this help")
+            print("/exit     Exit PurpleCli")
+            print("/quit     Exit PurpleCli")
+            print("/plan     Toggle plan mode")
+            print("/switch   Switch AI provider")
             print()
             continue
 
@@ -566,6 +689,10 @@ def main():
                 print("Plan mode deactivated.")
                 print()
 
+            continue
+
+        if user_input == "/switch":
+            switch_provider()
             continue
 
         agent(user_input, config)
