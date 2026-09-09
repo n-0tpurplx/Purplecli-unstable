@@ -5,10 +5,10 @@ title: “[Feature] “
 body:
 
 * type: dropdown
-    id: version
+    id: target
     attributes:
     label: Target Version
-    description: Which version should this feature be intended for?
+    description: Which version channel should this feature target?
     options:
     - Stable
     - Unstable
@@ -19,34 +19,34 @@ body:
     id: feature
     attributes:
     label: Feature Description
-    description: Describe the feature you’d like to see.
+    description: Describe the feature you would like to see.
     placeholder: |
     I would like PurpleCli to…
     validations:
     required: true
 * type: textarea
-    id: use-case
+    id: use_case
     attributes:
     label: Use Case
     description: Explain why this feature would be useful.
     placeholder: |
-    This would be useful because…
+    This feature would be useful because…
     validations:
     required: true
 * type: textarea
     id: implementation
     attributes:
     label: Possible Implementation
-    description: If you have an idea for how this could be implemented, describe it here.
+    description: If you have an idea for how this could work, describe it here.
     placeholder: |
-    A possible way to implement this would be…
+    A possible implementation could be…
     validations:
     required: false
 * type: textarea
     id: additional
     attributes:
     label: Additional Information
-    description: Add any other relevant information, examples, or screenshots.
-    placeholder: Anything else?
+    description: Add any other relevant information.
+    placeholder: Additional information, examples, or screenshots.
     validations:
     required: false
