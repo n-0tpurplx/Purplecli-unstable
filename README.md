@@ -1084,7 +1084,13 @@ PurpleCli was created and is maintained by:
 
 Contributors are credited through the project's contribution history.
 
-As the project grows, significant contributors may also be listed in an `AUTHORS.md` file.
+To get added to this list you must be actively contributing with high quality.
+For contribution info check [Contributing](CONTRIBUTING.md)
+
+---
+## Special Thanks
+
+Special thanks to ***Anyone*** that contributes and maintains the unstable build!
 
 ---
 
