@@ -49,6 +49,7 @@
 - [Agent Architecture](#agent-architecture)
 - [Project Structure](#project-structure)
 - [Security](#security)
+- [Unstable](#unstable)
 - [Development](#development)
 - [Extending PurpleCli](#extending-purplecli)
 - [Roadmap](#roadmap)
@@ -796,6 +797,13 @@ If you discover a security vulnerability in PurpleCli, do not publicly disclose 
 Report security issues through the project's designated security reporting process.
 
 ---
+## Unstable
+
+You can find unstable versions of PurpleCli and its latest features that havent yet been tested properly.
+
+you can find the repo here:
+
+https://github.com/n-0tpurplx/Purplecli-unstable
 
 ## Development
 
