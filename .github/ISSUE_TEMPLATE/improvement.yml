@@ -1,0 +1,51 @@
+name: Improvement
+description: Suggest an improvement to an existing PurpleCli feature
+title: “[Improvement] “
+
+body:
+
+* type: dropdown
+    id: version
+    attributes:
+    label: Version
+    description: Which version are you using?
+    options:
+    - Stable
+    - Unstable
+    validations:
+    required: true
+* type: textarea
+    id: current
+    attributes:
+    label: Current Behavior
+    description: Describe how the feature currently works.
+    placeholder: |
+    Currently, PurpleCli…
+    validations:
+    required: true
+* type: textarea
+    id: improvement
+    attributes:
+    label: Proposed Improvement
+    description: Describe how you think it could be improved.
+    placeholder: |
+    It would be better if PurpleCli…
+    validations:
+    required: true
+* type: textarea
+    id: reason
+    attributes:
+    label: Why?
+    description: Explain why this improvement would be useful.
+    placeholder: |
+    This would improve PurpleCli by…
+    validations:
+    required: true
+* type: textarea
+    id: additional
+    attributes:
+    label: Additional Information
+    description: Add any other relevant information.
+    placeholder: Anything else?
+    validations:
+    required: false
