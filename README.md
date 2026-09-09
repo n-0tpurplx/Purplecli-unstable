@@ -135,6 +135,43 @@ PurpleCli currently supports:
 
 - OpenRouter
 - Google Gemini
+- OpenAI
+> more to come!
+
+### Custom AI Providers
+**Automatic**
+
+> work in progress
+
+**Manual**
+
+You can currently (you need a selected provider for this tho) just ask PurpleCli to add an AI provider of your choice
+you can do it like this:
+
+1. Clone the repository:
+
+```bash
+  git clone https://github.com/n0tpurplx/Purplecli
+```
+2. Move into the code:
+
+```bash
+  cd Purplecli
+ ```
+
+3. Run purplecli
+
+```bash
+PurpleCli
+```
+
+4. Ask the AI to add support for your Provider
+
+```text
+you are currently in the PurpleCli source code. Please add support for (your provider) make sure to add it to the setup and switch too.
+```
+
+(5.) OPTIONAL! Open a pull request to add support for your Provider
 
 The provider can be selected through the setup command.
 
