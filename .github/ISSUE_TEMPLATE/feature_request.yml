@@ -1,52 +1,50 @@
 name: Feature Request
 description: Suggest a new feature or capability for PurpleCli
-title: “[Feature] “
+title: "[Feature]: "
 
 body:
+  - type: dropdown
+    attributes:
+      label: Target Version
+      description: Which version channel should this feature target?
+      options:
+        - Stable
+        - Unstable
+        - Both
+    validations:
+      required: true
 
-* type: dropdown
-    id: target
+  - type: textarea
     attributes:
-    label: Target Version
-    description: Which version channel should this feature target?
-    options:
-    - Stable
-    - Unstable
-    - Both
+      label: Feature Description
+      description: Describe the feature you would like to see.
+      placeholder: |
+        I would like PurpleCli to...
     validations:
-    required: true
-* type: textarea
-    id: feature
+      required: true
+
+  - type: textarea
     attributes:
-    label: Feature Description
-    description: Describe the feature you would like to see.
-    placeholder: |
-    I would like PurpleCli to…
+      label: Use Case
+      description: Explain why this feature would be useful.
+      placeholder: |
+        This feature would be useful because...
     validations:
-    required: true
-* type: textarea
-    id: use_case
+      required: true
+
+  - type: textarea
     attributes:
-    label: Use Case
-    description: Explain why this feature would be useful.
-    placeholder: |
-    This feature would be useful because…
+      label: Possible Implementation
+      description: If you have an idea for how this could work, describe it here.
+      placeholder: |
+        A possible implementation could be...
     validations:
-    required: true
-* type: textarea
-    id: implementation
+      required: false
+
+  - type: textarea
     attributes:
-    label: Possible Implementation
-    description: If you have an idea for how this could work, describe it here.
-    placeholder: |
-    A possible implementation could be…
+      label: Additional Information
+      description: Add any other relevant information.
+      placeholder: Additional information, examples, or screenshots.
     validations:
-    required: false
-* type: textarea
-    id: additional
-    attributes:
-    label: Additional Information
-    description: Add any other relevant information.
-    placeholder: Additional information, examples, or screenshots.
-    validations:
-    required: false
+      required: false
