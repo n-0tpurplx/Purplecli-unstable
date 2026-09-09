@@ -1,0 +1,80 @@
+name: Bug Report
+description: Report a bug or unexpected behavior in PurpleCli
+title: “[Bug] “
+labels:
+
+* bug
+
+body:
+
+* type: dropdown
+    id: version
+    attributes:
+    label: Version
+    description: Which version of PurpleCli are you using?
+    options:
+    - Stable
+    - Unstable
+    validations:
+    required: true
+* type: input
+    id: purplecli-version
+    attributes:
+    label: PurpleCli Version
+    description: “Run PurpleCli --version to find your version.”
+    placeholder: “0.1.5”
+    validations:
+    required: true
+* type: textarea
+    id: description
+    attributes:
+    label: What happened?
+    description: Clearly describe the bug and what you expected to happen.
+    placeholder: |
+    Describe what happened…
+
+Expected behavior:
+Describe what you expected to happen...
+
+    validations:
+    required: true
+* type: textarea
+    id: reproduction
+    attributes:
+    label: Steps to Reproduce
+    description: Provide the steps needed to reproduce the issue.
+    placeholder: |
+    Run PurpleCli
+    Enter …
+    Run …
+    The issue occurs
+    validations:
+    required: true
+* type: textarea
+    id: error
+    attributes:
+    label: Error Message / Output
+    description: Paste any relevant error messages or terminal output here.
+    render: shell
+    validations:
+    required: false
+* type: textarea
+    id: environment
+    attributes:
+    label: Environment
+    description: Tell us what environment you’re running PurpleCli in.
+    placeholder: |
+    OS:
+    Python version:
+    Installation method:
+    Provider: OpenRouter / Gemini / ChatGPT / Other
+    validations:
+    required: true
+* type: textarea
+    id: additional
+    attributes:
+    label: Additional Information
+    description: Anything else that might help us investigate the issue.
+    placeholder: Add any other relevant information, screenshots, logs, etc.
+    validations:
+    required: false
