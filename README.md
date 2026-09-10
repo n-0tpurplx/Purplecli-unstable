@@ -269,7 +269,7 @@ If the command is not immediately available, restart your terminal or make sure 
 Clone the repository:
 
 ```bash
-git clone https://github.com/n0tpurplx/Purplecli.git
+git clone https://github.com/n-0tpurplx/Purplecli-unstable
 ```
 
 Enter the project:
