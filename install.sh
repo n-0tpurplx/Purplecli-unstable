@@ -2,7 +2,7 @@
 
 set -e
 
-REPO="https://raw.githubusercontent.com/n0tpurplx/Purplecli/main"
+REPO="https://github.com/n-0tpurplx/Purplecli-unstable/main"
 INSTALL_DIR="$HOME/.local/bin"
 INSTALL_FILE="$INSTALL_DIR/PurpleCli"
 
